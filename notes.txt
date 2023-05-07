@@ -1,0 +1,22 @@
+controller yang di akses utama pasti welcome.php di folder controller
+untuk mengubah liat di bagian routes.php
+
+
+$this->load->view('nama folder/nama file(function)');
+contoh:
+$this->load->view('auth/login');
+
+folder auth dibikin di folder views kemudian bikin file login.php
+
+manggil/pindah page + href="<?= base_url('nama folder controller/nama function');?
+
+contoh
+manggil/pindah page + href="<?= base_url('auth/registration');?
+
+set value agar hasil input tidak hilang jika salah satu mengalami kesalahan
+
+value="<?= set_value('nama name');?>">
+contoh
+value="<?= set_value('email');?>">
+link ytb : https://www.youtube.com/watch?v=InxCCPlKCrk&list=PLFIM0718LjIXU8ul9FiN-owk04cQKtHPw&index=3
+minute 20.00
