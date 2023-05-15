@@ -35,9 +35,46 @@
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
-							<div class="modal-body">
-								<a class="btn btn-primary mb-2" href="javascript:add();"><i class="fas fa-fw fa-plus"></i> Tambah Pesanan</a>
-								<div class="row">
+							<!-- <div class="modal-body"> -->
+							<div class="row my-2">
+								<div class="col-lg">
+									<div class="table-responsive">
+										<table class="text-center table table-bordered table-hover table-striped" id="table_id">
+											<a class="btn btn-primary mb-3" href="javascript:add();"><i class="fas fa-fw fa-plus"></i> Tambah Pesanan</a>
+
+											<thead>
+												<tr>
+													<th>No.</th>
+													<th>Nama Minuman</th>
+													<th>Harga Minuman</th>
+													<th>Pesanan</th>
+													<!-- <th> ada Outlet</th> -->
+													<?php if ($dataUser['jabatan'] == 'administrator') : ?>
+														<th>Aksi</th>
+													<?php endif ?>
+												</tr>
+											</thead>
+											<tbdody>
+												<?php $i = 1; ?>
+												<?php foreach ($menu as $dm) : ?>
+													<tr>
+														<td><?= $i++; ?></td>
+														<td class="text-left"><?= $dm['nama_menu']; ?></td>
+														<td class="text-left">Rp. <?= number_format($dm['harga_menu']); ?></td>
+														<td>
+															<input type="number" min="1" id="kuantitas[]" class="form-control" placeholder="Masukkan Jumlah Pesanan" name="kuantitas[]" value="<?= set_value('kuantitas[]'); ?>" />
+															<?= form_error('kuantitas[]', '<small class="form-text text-danger">', '</small>'); ?>
+														</td>
+														<!-- <td class="text-left"><?= $dm['nama_outlet']; ?></td> -->
+													</tr>
+												<?php endforeach ?>
+											</tbdody>
+										</table>
+									</div>
+									<!-- <button type="submit" class="btn btn-success"><i class="fas fa-fw fa-save" class="text-right"></i> Simpan</button> -->
+								</div>
+
+								<!-- <div class="row">
 									<div class="col-lg-4">
 										<div class="form-group">
 											<label for="kuantitas[]">Kuantitas</label>
@@ -55,22 +92,22 @@
 											</select>
 										</div>
 									</div>
-								</div>
+								</div> -->
 								<hr>
 								<div id="record"></div>
-								<div class="col-lg">
+								<!-- <div class="col-lg">
 									<div class="form-group">
 										<label for="keterangan">Keterangan</label>
 										<textarea name="keterangan" id="keterangan" class="form-control" placeholder="(optional)"><?= set_value('keterangan'); ?></textarea>
 										<?= form_error('keterangan', '<small class="form-text text-danger">', '</small>'); ?>
 									</div>
-								</div>
+								</div> -->
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-times"></i> Batal</button>
 								<button type="submit" class="btn btn-success"><i class="fas fa-fw fa-save"></i> Simpan</button>
 							</div>
-						</div>
+							<!-- </div> -->
 					</form>
 				</div>
 			</div>
