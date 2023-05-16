@@ -23,13 +23,13 @@
 					</thead>
 					<tbdody>
 						<?php $i = 1; ?>
-						<?php foreach ($pembayaran as $dp): ?>
-							<?php if ($dp['status_bayar'] == 'belum_dibayar'): ?>
+						<?php foreach ($pembayaran as $dp) : ?>
+							<?php if ($dp['status_bayar'] == 'belum_dibayar') : ?>
 								<tr>
 									<td><?= $i++; ?></td>
 									<td class="text-left"><?= $dp['kode_invoice']; ?></td>
 									<td class="text-left">
-										Rp. 
+										Rp.
 										<?= number_format($this->pm->totalHargaTerakhir($dp['kode_invoice'])['total_harga_terakhir']); ?>
 									</td>
 									<td class="text-left">Rp. <?= number_format(0); ?></td>
@@ -42,8 +42,8 @@
 									<td>
 										<a href="<?= base_url('pembayaran/bayar/' . $dp['kode_invoice']); ?>" class="btn btn-sm m-1 btn-danger"><i class="fas fa-fw fa-dollar-sign"></i> Bayar</a>
 									</td>
-								</tr>	
-							<?php else: ?>
+								</tr>
+							<?php else : ?>
 								<tr>
 									<td><?= $i++; ?></td>
 									<td class="text-left"><?= $dp['kode_invoice']; ?></td>

@@ -42,5 +42,5 @@
                 <button type="submit" class="btn btn-success"><i class="fas fa-fw fa-save" class="text-right"></i> Simpan</button>
             </div>
         </div>
-        <form action="<?= base_url('transaksi/addTransaksi'); ?>" method="post">
+    </form>
 </div>
