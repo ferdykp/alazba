@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2023 at 03:35 AM
+-- Generation Time: May 16, 2023 at 05:15 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -77,7 +77,36 @@ INSERT INTO `tb_log` (`id_log`, `isi_log`, `tanggal_log`, `id_user`) VALUES
 (36, 'User dengan nama user <b>Ferdy</b> berhasil dihapus', 1683167209, 1),
 (37, 'User baru dengan nama user <b>Ferdy</b> berhasil ditambahkan', 1683167223, 1),
 (38, 'Print profile', 1683167693, 15),
-(39, 'User dengan nama user <b>Ferdy</b> berhasil dihapus', 1683168280, 1);
+(39, 'User dengan nama user <b>Ferdy</b> berhasil dihapus', 1683168280, 1),
+(40, 'Pembayaran baru dengan kode invoice <b>060320230101T0001</b> berhasil ditambahkan', 1683733998, 1),
+(41, 'Transaksi baru dengan kode invoice <b>100520230101T0001</b> berhasil ditambahkan', 1683734016, 1),
+(42, 'Menu baru dengan nama menu <b>Air Mineral</b> berhasil ditambahkan', 1683990048, 1),
+(43, 'Transaksi baru dengan kode invoice <b>130520230116T0001</b> berhasil ditambahkan', 1683990310, 16),
+(44, 'Transaksi baru dengan kode invoice <b>130520230116T0001</b> berhasil ditambahkan', 1683991577, 16),
+(45, 'Transaksi baru dengan kode invoice <b>130520230116T0001</b> berhasil ditambahkan', 1683992210, 16),
+(46, 'Transaksi baru dengan kode invoice <b>130520230116T0001</b> berhasil ditambahkan', 1683992550, 16),
+(47, 'Transaksi baru dengan kode invoice <b>150520230116T0001</b> berhasil ditambahkan', 1684146938, 16),
+(48, 'Transaksi baru dengan kode invoice <b>150520230116T0001</b> berhasil ditambahkan', 1684156113, 16),
+(49, 'Transaksi baru dengan kode invoice <b>150520230101T0001</b> berhasil ditambahkan', 1684156392, 1),
+(50, 'Transaksi dengan kode invoice <b>150520230116T0001</b> berhasil dihapus', 1684156604, 1),
+(51, 'Transaksi dengan kode invoice <b>130520230116T0001</b> berhasil dihapus', 1684156613, 1),
+(52, 'Transaksi baru dengan kode invoice <b>160520230116T0001</b> berhasil ditambahkan', 1684171863, 16),
+(53, 'Transaksi baru dengan kode invoice <b>160520230116T0001</b> berhasil ditambahkan', 1684172005, 16),
+(54, 'Transaksi baru dengan kode invoice <b>160520230116T0001</b> berhasil ditambahkan', 1684172840, 16),
+(55, 'Transaksi baru dengan kode invoice <b>160520230116T0001</b> berhasil ditambahkan', 1684173038, 16),
+(56, 'Transaksi baru dengan kode invoice <b>160520230116T0001</b> berhasil ditambahkan', 1684173105, 16),
+(57, 'Transaksi baru dengan kode invoice <b>160520230116T0001</b> berhasil ditambahkan', 1684173160, 16),
+(58, 'Transaksi dengan kode invoice <b>160520230116T0001</b> berhasil dihapus', 1684173390, 16),
+(59, 'Transaksi baru dengan kode invoice <b>160520230116T0001</b> berhasil ditambahkan', 1684173502, 16),
+(60, 'Transaksi dengan kode invoice <b>160520230116T0001</b> berhasil dihapus', 1684173512, 16),
+(61, 'Transaksi baru dengan kode invoice <b>160520230116T0001</b> berhasil ditambahkan', 1684173981, 16),
+(62, 'Transaksi baru dengan kode invoice <b>160520230116T0001</b> berhasil ditambahkan', 1684174001, 16),
+(63, 'Transaksi baru dengan kode invoice <b>160520230116T0001</b> berhasil ditambahkan', 1684174169, 16),
+(64, 'Transaksi baru dengan kode invoice <b>160520230116T0001</b> berhasil ditambahkan', 1684174245, 16),
+(65, 'Transaksi baru dengan kode invoice <b>160520230116T0001</b> berhasil ditambahkan', 1684174411, 16),
+(66, 'Transaksi baru dengan kode invoice <b>160520230116T0001</b> berhasil ditambahkan', 1684174617, 16),
+(67, 'Transaksi baru dengan kode invoice <b>160520230116T0001</b> berhasil ditambahkan', 1684174624, 16),
+(68, 'Transaksi baru dengan kode invoice <b>160520230116T0001</b> berhasil ditambahkan', 1684175502, 16);
 
 -- --------------------------------------------------------
 
@@ -126,7 +155,8 @@ INSERT INTO `tb_menu` (`id_menu`, `nama_menu`, `harga_menu`, `id_outlet`) VALUES
 (12, 'Original Tea', 5000, 1),
 (13, 'Milk Tea', 6000, 1),
 (14, 'Black Coffee', 5000, 1),
-(15, 'White Coffee', 6000, 1);
+(15, 'White Coffee', 6000, 1),
+(16, 'Air Mineral', 2000, 1);
 
 -- --------------------------------------------------------
 
@@ -171,7 +201,8 @@ CREATE TABLE `tb_pembayaran` (
 --
 
 INSERT INTO `tb_pembayaran` (`id_pembayaran`, `total_pembayaran`, `jml_uang_dibayar`, `kembalian`, `tgl_pembayaran`, `kode_invoice`, `id_user`, `id_outlet`) VALUES
-(1, 10000, 20000, 10000, 1678100542, '060320230101T0002', 1, 1);
+(1, 10000, 20000, 10000, 1678100542, '060320230101T0002', 1, 1),
+(2, 12000, 12000, 0, 1683733998, '060320230101T0001', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -217,8 +248,90 @@ CREATE TABLE `tb_transaksi` (
 --
 
 INSERT INTO `tb_transaksi` (`id_transaksi`, `kode_invoice`, `kuantitas`, `status_bayar`, `tgl_transaksi`, `keterangan`, `id_menu`, `id_user`, `id_outlet`) VALUES
-(1, '060320230101T0001', 2, 'belum_dibayar', 1678100489, '', 15, 1, 1),
-(2, '060320230101T0002', 1, 'sudah_dibayar', 1678100518, 'Tanpa gula\r\n', 10, 1, 1);
+(1, '060320230101T0001', 2, 'sudah_dibayar', 1678100489, '', 15, 1, 1),
+(2, '060320230101T0002', 1, 'sudah_dibayar', 1678100518, 'Tanpa gula\r\n', 10, 1, 1),
+(3, '100520230101T0001', 3, 'belum_dibayar', 1683734016, 'tes', 12, 1, 1),
+(65, '150520230101T0001', 2, 'belum_dibayar', 1684156392, '', 11, 1, 1),
+(136, '160520230116T0001', 1, 'belum_dibayar', 1684173981, '', 0, 16, 1),
+(137, '160520230116T0001', 0, 'belum_dibayar', 1684173981, '', 0, 16, 1),
+(138, '160520230116T0001', 0, 'belum_dibayar', 1684173981, '', 0, 16, 1),
+(139, '160520230116T0001', 0, 'belum_dibayar', 1684173981, '', 0, 16, 1),
+(140, '160520230116T0001', 0, 'belum_dibayar', 1684173981, '', 0, 16, 1),
+(141, '160520230116T0001', 0, 'belum_dibayar', 1684173981, '', 0, 16, 1),
+(142, '160520230116T0001', 0, 'belum_dibayar', 1684173981, '', 0, 16, 1),
+(143, '160520230116T0001', 0, 'belum_dibayar', 1684173981, '', 0, 16, 1),
+(144, '160520230116T0001', 0, 'belum_dibayar', 1684173981, '', 0, 16, 1),
+(145, '160520230116T0001', 0, 'belum_dibayar', 1684173981, '', 0, 16, 1),
+(146, '160520230116T0001', 1, 'belum_dibayar', 1684174001, '', 0, 16, 1),
+(147, '160520230116T0001', 0, 'belum_dibayar', 1684174001, '', 0, 16, 1),
+(148, '160520230116T0001', 0, 'belum_dibayar', 1684174001, '', 0, 16, 1),
+(149, '160520230116T0001', 0, 'belum_dibayar', 1684174001, '', 0, 16, 1),
+(150, '160520230116T0001', 0, 'belum_dibayar', 1684174001, '', 0, 16, 1),
+(151, '160520230116T0001', 0, 'belum_dibayar', 1684174001, '', 0, 16, 1),
+(152, '160520230116T0001', 0, 'belum_dibayar', 1684174001, '', 0, 16, 1),
+(153, '160520230116T0001', 0, 'belum_dibayar', 1684174001, '', 0, 16, 1),
+(154, '160520230116T0001', 0, 'belum_dibayar', 1684174001, '', 0, 16, 1),
+(155, '160520230116T0001', 0, 'belum_dibayar', 1684174001, '', 0, 16, 1),
+(156, '160520230116T0001', 2, 'belum_dibayar', 1684174169, '', 0, 16, 1),
+(157, '160520230116T0001', 0, 'belum_dibayar', 1684174169, '', 0, 16, 1),
+(158, '160520230116T0001', 0, 'belum_dibayar', 1684174169, '', 0, 16, 1),
+(159, '160520230116T0001', 0, 'belum_dibayar', 1684174169, '', 0, 16, 1),
+(160, '160520230116T0001', 0, 'belum_dibayar', 1684174169, '', 0, 16, 1),
+(161, '160520230116T0001', 0, 'belum_dibayar', 1684174169, '', 0, 16, 1),
+(162, '160520230116T0001', 0, 'belum_dibayar', 1684174169, '', 0, 16, 1),
+(163, '160520230116T0001', 0, 'belum_dibayar', 1684174169, '', 0, 16, 1),
+(164, '160520230116T0001', 0, 'belum_dibayar', 1684174169, '', 0, 16, 1),
+(165, '160520230116T0001', 0, 'belum_dibayar', 1684174169, '', 0, 16, 1),
+(166, '160520230116T0001', 2, 'belum_dibayar', 1684174245, '', 0, 16, 1),
+(167, '160520230116T0001', 0, 'belum_dibayar', 1684174245, '', 0, 16, 1),
+(168, '160520230116T0001', 0, 'belum_dibayar', 1684174245, '', 0, 16, 1),
+(169, '160520230116T0001', 0, 'belum_dibayar', 1684174245, '', 0, 16, 1),
+(170, '160520230116T0001', 0, 'belum_dibayar', 1684174245, '', 0, 16, 1),
+(171, '160520230116T0001', 0, 'belum_dibayar', 1684174245, '', 0, 16, 1),
+(172, '160520230116T0001', 0, 'belum_dibayar', 1684174245, '', 0, 16, 1),
+(173, '160520230116T0001', 0, 'belum_dibayar', 1684174245, '', 0, 16, 1),
+(174, '160520230116T0001', 0, 'belum_dibayar', 1684174245, '', 0, 16, 1),
+(175, '160520230116T0001', 0, 'belum_dibayar', 1684174245, '', 0, 16, 1),
+(176, '160520230116T0001', 3, 'belum_dibayar', 1684174411, '', 0, 16, 1),
+(177, '160520230116T0001', 0, 'belum_dibayar', 1684174411, '', 0, 16, 1),
+(178, '160520230116T0001', 0, 'belum_dibayar', 1684174411, '', 0, 16, 1),
+(179, '160520230116T0001', 0, 'belum_dibayar', 1684174411, '', 0, 16, 1),
+(180, '160520230116T0001', 0, 'belum_dibayar', 1684174411, '', 0, 16, 1),
+(181, '160520230116T0001', 0, 'belum_dibayar', 1684174411, '', 0, 16, 1),
+(182, '160520230116T0001', 0, 'belum_dibayar', 1684174411, '', 0, 16, 1),
+(183, '160520230116T0001', 0, 'belum_dibayar', 1684174411, '', 0, 16, 1),
+(184, '160520230116T0001', 0, 'belum_dibayar', 1684174411, '', 0, 16, 1),
+(185, '160520230116T0001', 0, 'belum_dibayar', 1684174411, '', 0, 16, 1),
+(186, '160520230116T0001', 3, 'belum_dibayar', 1684174617, '', 0, 16, 1),
+(187, '160520230116T0001', 0, 'belum_dibayar', 1684174617, '', 0, 16, 1),
+(188, '160520230116T0001', 0, 'belum_dibayar', 1684174617, '', 0, 16, 1),
+(189, '160520230116T0001', 0, 'belum_dibayar', 1684174617, '', 0, 16, 1),
+(190, '160520230116T0001', 0, 'belum_dibayar', 1684174617, '', 0, 16, 1),
+(191, '160520230116T0001', 0, 'belum_dibayar', 1684174617, '', 0, 16, 1),
+(192, '160520230116T0001', 0, 'belum_dibayar', 1684174617, '', 0, 16, 1),
+(193, '160520230116T0001', 0, 'belum_dibayar', 1684174617, '', 0, 16, 1),
+(194, '160520230116T0001', 0, 'belum_dibayar', 1684174617, '', 0, 16, 1),
+(195, '160520230116T0001', 0, 'belum_dibayar', 1684174617, '', 0, 16, 1),
+(196, '160520230116T0001', 3, 'belum_dibayar', 1684174624, '', 0, 16, 1),
+(197, '160520230116T0001', 0, 'belum_dibayar', 1684174624, '', 0, 16, 1),
+(198, '160520230116T0001', 0, 'belum_dibayar', 1684174624, '', 0, 16, 1),
+(199, '160520230116T0001', 0, 'belum_dibayar', 1684174624, '', 0, 16, 1),
+(200, '160520230116T0001', 0, 'belum_dibayar', 1684174624, '', 0, 16, 1),
+(201, '160520230116T0001', 0, 'belum_dibayar', 1684174624, '', 0, 16, 1),
+(202, '160520230116T0001', 0, 'belum_dibayar', 1684174624, '', 0, 16, 1),
+(203, '160520230116T0001', 0, 'belum_dibayar', 1684174624, '', 0, 16, 1),
+(204, '160520230116T0001', 0, 'belum_dibayar', 1684174624, '', 0, 16, 1),
+(205, '160520230116T0001', 0, 'belum_dibayar', 1684174624, '', 0, 16, 1),
+(206, '160520230116T0001', 2, 'belum_dibayar', 1684175502, '', 0, 16, 1),
+(207, '160520230116T0001', 0, 'belum_dibayar', 1684175502, '', 0, 16, 1),
+(208, '160520230116T0001', 0, 'belum_dibayar', 1684175502, '', 0, 16, 1),
+(209, '160520230116T0001', 0, 'belum_dibayar', 1684175502, '', 0, 16, 1),
+(210, '160520230116T0001', 0, 'belum_dibayar', 1684175502, '', 0, 16, 1),
+(211, '160520230116T0001', 0, 'belum_dibayar', 1684175502, '', 0, 16, 1),
+(212, '160520230116T0001', 0, 'belum_dibayar', 1684175502, '', 0, 16, 1),
+(213, '160520230116T0001', 0, 'belum_dibayar', 1684175502, '', 0, 16, 1),
+(214, '160520230116T0001', 0, 'belum_dibayar', 1684175502, '', 0, 16, 1),
+(215, '160520230116T0001', 0, 'belum_dibayar', 1684175502, '', 0, 16, 1);
 
 -- --------------------------------------------------------
 
@@ -316,7 +429,7 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_log`
 --
 ALTER TABLE `tb_log`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `tb_log_pengeluaran`
@@ -328,7 +441,7 @@ ALTER TABLE `tb_log_pengeluaran`
 -- AUTO_INCREMENT for table `tb_menu`
 --
 ALTER TABLE `tb_menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tb_outlet`
@@ -340,7 +453,7 @@ ALTER TABLE `tb_outlet`
 -- AUTO_INCREMENT for table `tb_pembayaran`
 --
 ALTER TABLE `tb_pembayaran`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_pengeluaran`
@@ -352,7 +465,7 @@ ALTER TABLE `tb_pengeluaran`
 -- AUTO_INCREMENT for table `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=216;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
