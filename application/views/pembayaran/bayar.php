@@ -105,7 +105,8 @@
 										<input type="number" id="jml_uang_dibayar" required="" min="<?= $total_harga_terakhir['total_harga_terakhir']; ?>" class="form-control" name="jml_uang_dibayar" value="<?= set_value('jml_uang_dibayar'); ?>">
 									</div>
 									<div class="form-group text-right">
-										<button name="bayar" type="submit" class="btn btn-success"><i class="fas fa-fw fa-dollar-sign"></i> Bayar</button>
+										<button name="bayar" type="submit" class="btn btn-success"><i class="fas fa-fw fa-dollar-sign"></i> Bayar Cash</button>
+										<button name="" type="submit" class="btn btn-success"><i class="fas fa-fw fa-dollar-sign"></i> Bayar Debit</button>
 									</div>
 								</form>
 							<?php endif ?>
