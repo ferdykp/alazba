@@ -85,6 +85,19 @@ class Customer extends CI_Controller
         // $validation = $this->form_validation; //objek form validation
         // $validation->set_rules($Mahasiswa->rules()); //menerapkan rules validasi pada mahasiswa_model
         // //kondisi jika semua kolom telah divalidasi, maka akan menjalankan method save pada mahasiswa_model
+
+        // $this->mm->check_login();
+        $data['dataUser'] = $this->mm->dataUser();
+        // $data["rsvp"] = $this->Reservation->getAll();
+        $data['title'] = "Booking Meja";
+        // $data['pengeluaran'] = $this->pemo->getAllPengeluaran();
+        // $data['transaksi'] = $this->tm->getTransaksiByIdOutletGroupByKodeInvoice($data['dataUser']['id_outlet']);
+        // $this->load->view('templates/header', $data);
+        // $this->load->view('templates/sidebar', $data);
+        // $this->load->view('reservation/add', $data);
+        // $this->load->view('templates/tutup_sidebar', $data);
+        // $this->load->view('templates/footer', $data);
+
         $rsvp = $this->Reservation;
         $validation = $this->form_validation;
         $validation->set_rules($rsvp->rules());
@@ -96,18 +109,26 @@ class Customer extends CI_Controller
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button></div>');
-            redirect("mahasiswa");
+            redirect("customer/reservation");
         }
-        $data["title"] = "Tambah Data RSVP";
+        // $data["title"] = "Tambah Data RSVP";
+        // $this->load->view('templates/header', $data);
+        // $this->load->view('templates/menu');
+        // $this->load->view('reservation/add', $data);
+        // $this->load->view('templates/footer');
+
         $this->load->view('templates/header', $data);
-        $this->load->view('templates/menu');
+        $this->load->view('templates/sidebar', $data);
         $this->load->view('reservation/add', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/tutup_sidebar', $data);
+        $this->load->view('templates/footer', $data);
     }
 
     public function edit($id = null)
     {
-        if (!isset($id)) redirect('reservation');
+        $data['dataUser'] = $this->mm->dataUser();
+
+        if (!isset($id)) redirect('customer/reservation');
 
         $rsvp = $this->Reservation;
         $validation = $this->form_validation;
@@ -126,9 +147,10 @@ class Customer extends CI_Controller
         $data["data_rsvp"] = $rsvp->getById($id);
         if (!$data["data_rsvp"]) show_404();
         $this->load->view('templates/header', $data);
-        $this->load->view('templates/menu');
+        $this->load->view('templates/sidebar', $data);
         $this->load->view('reservation/edit', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/tutup_sidebar', $data);
+        $this->load->view('templates/footer', $data);
     }
 
     public function delete()

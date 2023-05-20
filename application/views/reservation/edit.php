@@ -3,7 +3,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb ">
             <li class="breadcrumb-item"><a>Mahasiswa</a></li>
-            <li class="breadcrumb-item "><a href="<?= base_url('mahasiswa'); ?>">List Data</a></li>
+            <li class="breadcrumb-item "><a href="<?= base_url('reservation'); ?>">List Data</a></li>
             <li class="breadcrumb-item active" aria-current="page">Edit Data</li>
         </ol>
     </nav>
@@ -13,83 +13,47 @@
                 <div class="card-body">
                     <?php
                     //create form
-                    $attributes = array('id' => 'FrmEditMahasiswa', 'method' => "post", "autocomplete" => "off");
+                    $attributes = array('id' => 'FrmEditBooking', 'method' => "post", "autocomplete" => "off");
                     echo form_open('', $attributes);
                     ?>
                     <div class="form-group row">
-                        <label for="Nama" class="col-sm-2 col-form-label">Nama</label>
+                        <label for="nama_konsumen" class="col-sm-2 col-form-label">Nama Pemesan</label>
                         <div class="col-sm-10">
-                            <input type="hidden" class="form-control" id="IdMhsw" name="IdMhsw" value=" <?= $data_mahasiswa->IdMhsw; ?>">
-                            <input type="text" class="form-control" id="Nama" name="Nama" value=" <?= $data_mahasiswa->Nama; ?>">
+                            <input type="hidden" class="form-control" id="id_rsvp" name="id_rsvp" value=" <?= $data_rsvp->id_rsvp; ?>">
+                            <input type="text" class="form-control" id="nama_konsumen" name="nama_konsumen" value=" <?= $data_rsvp->nama_konsumen; ?>">
                             <small class="text-danger">
-                                <?php echo form_error('Nama') ?>
-                            </small>
-                        </div>
-                    </div>
-
-                    <fieldset class="form-group">
-                        <div class="row">
-                            <legend class="col-form-label col-sm-2 pt-0">Jenis Kelamin</legend>
-                            <div class="col-sm-10">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" id="JenisKelamin" name="JenisKelamin" value="Laki-laki" <?php if ($data_mahasiswa->JenisKelamin == "Laki-laki") : echo "checked";
-                                                                                                                                            endif; ?>>
-                                    <label class="form-check-label" for="JenisKelamin">
-                                        Laki-laki
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" id="JenisKelamin2" name="JenisKelamin" value="Perempuan" <?php if ($data_mahasiswa->JenisKelamin == "Perempuan") : echo "checked";
-                                                                                                                                            endif; ?>>
-                                    <label class="form-check-label" for="JenisKelamin2">
-                                        Perempuan
-                                    </label>
-                                </div>
-                                <small class="text-danger">
-                                    <?php echo form_error('JenisKelamin') ?>
-                                </small>
-                            </div>
-                        </div>
-                    </fieldset>
-
-                    <div class="form-group row">
-                        <label for="Alamat" class="col-sm-2 col-form-label">Alamat</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" id="Alamat" name="Alamat" rows="3"><?= $data_mahasiswa->Alamat; ?></textarea>
-                            <small class="text-danger">
-                                <?php echo form_error('Alamat') ?>
+                                <?php echo form_error('nama_konsumen') ?>
                             </small>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="Alamat" class="col-sm-2 col-form-label">Agama</label>
+                        <label for="jumlah_konsumen" class="col-sm-2 col-form-label">Jumlah Pemesan</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="Agama" name="Agama">
-                                <option value="Islam" selected disabled>Pilih</option>
-                                <option value="Islam" <?php if ($data_mahasiswa->Agama == "Islam") : echo "selected";
-                                                        endif; ?>>Islam</option>
-                                <option value="Protestan" <?php if ($data_mahasiswa->Agama == "Protestan") : echo "selected";
-                                                            endif; ?>>Protestan</option>
-                                <option value="Katolik" <?php if ($data_mahasiswa->Agama == "Katolik") : echo "selected";
-                                                        endif; ?>>Katolik</option>
-                                <option value="Hindu" <?php if ($data_mahasiswa->Agama == "Hindu") : echo "selected";
-                                                        endif; ?>>Hindu</option>
-                                <option value="Buddha" <?php if ($data_mahasiswa->Agama == "Buddha") : echo "selected";
-                                                        endif; ?>>Buddha</option>
-                                <option value="Khonghucu" <?php if ($data_mahasiswa->Agama == "Khonghucu") : echo "selected";
-                                                            endif; ?>>Khonghucu</option>
-                            </select>
+                            <input type="hidden" class="form-control" id="id_rsvp" name="id_rsvp" value=" <?= $data_rsvp->id_rsvp; ?>">
+                            <input type="number" class="form-control" id="jumlah_konsumen" name="jumlah_konsumen" value=" <?= $data_rsvp->jumlah_konsumen; ?>">
                             <small class="text-danger">
-                                <?php echo form_error('Agama') ?>
+                                <?php echo form_error('jumlah_konsumen') ?>
                             </small>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="NoHp" class="col-sm-2 col-form-label">No Hp</label>
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control" id="NoHp" name="NoHp" value="<?= $data_mahasiswa->NoHp; ?>">
+                        <label for="pesanan" class="col-sm-2 col-form-label">Pesanan</label>
+                        <div class="col-sm-10">
+                            <input type="hidden" class="form-control" id="id_rsvp" name="id_rsvp" value=" <?= $data_rsvp->id_rsvp; ?>">
+                            <input type="text" class="form-control" id="pesanan" name="pesanan" value=" <?= $data_rsvp->pesanan; ?>">
+                            <small class="text-danger">
+                                <?php echo form_error('pesanan') ?>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="NoHp" class="col-sm-2 col-form-label">Pesanan</label>
+                        <div class="col-sm-10">
+                            <input type="hidden" class="form-control" id="id_rsvp" name="id_rsvp" value=" <?= $data_rsvp->id_rsvp; ?>">
+                            <input type="text" class="form-control" id="NoHp" name="NoHp" value=" <?= $data_rsvp->NoHp; ?>">
                             <small class="text-danger">
                                 <?php echo form_error('NoHp') ?>
                             </small>
@@ -97,11 +61,23 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="Email" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="Email" name="Email" value="<?= $data_mahasiswa->Email; ?>">
+                        <label for="tanggal" class="col-sm-2 col-form-label">Pesanan</label>
+                        <div class="col-sm-10">
+                            <input type="hidden" class="form-control" id="id_rsvp" name="id_rsvp" value=" <?= $data_rsvp->id_rsvp; ?>">
+                            <input type="date" class="form-control" id="tanggal" name="tanggal" value=" <?= $data_rsvp->tanggal; ?>">
                             <small class="text-danger">
-                                <?php echo form_error('Email') ?>
+                                <?php echo form_error('tanggal') ?>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="waktu" class="col-sm-2 col-form-label">Pesanan</label>
+                        <div class="col-sm-10">
+                            <input type="hidden" class="form-control" id="id_rsvp" name="id_rsvp" value=" <?= $data_rsvp->id_rsvp; ?>">
+                            <input type="time" class="form-control" id="waktu" name="waktu" value=" <?= $data_rsvp->waktu; ?>">
+                            <small class="text-danger">
+                                <?php echo form_error('waktu') ?>
                             </small>
                         </div>
                     </div>

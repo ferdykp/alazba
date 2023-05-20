@@ -25,20 +25,25 @@ class Reservation extends CI_Model
                 'rules' => 'trim|required'
             ],
             [
+                'field' => 'tanggal',
+                'label' => 'Tanggal Pesan',
+                'rules' => 'trim|required'
+            ],
+            [
                 'field' => 'waktu',
                 'label' => 'Waktu Pesan',
                 'rules' => 'trim|required'
             ],
-            // [
-            //     'field' => 'NoHp',
-            //     'label' => 'No Hp',
-            //     'rules' => 'trim|required|numeric|min_length[9]|max_length[15]'
-            // ],
             [
-                'field' => 'bayar',
-                'label' => 'bayar',
-                'rules' => 'trim|required'
-            ]
+                'field' => 'NoHp',
+                'label' => 'No Hp',
+                'rules' => 'trim|required|numeric|min_length[9]|max_length[15]'
+            ],
+            // [
+            //     'field' => 'bayar',
+            //     'label' => 'bayar',
+            //     'rules' => 'trim|required'
+            // ]
         ];
     }
 
@@ -68,9 +73,10 @@ class Reservation extends CI_Model
             "nama_konsumen" => $this->input->post('nama_konsumen'),
             "jumlah_konsumen" => $this->input->post('jumlah_konsumen'),
             "pesanan" => $this->input->post('pesanan'),
+            "tanggal" => $this->input->post('tanggal'),
             "waktu" => $this->input->post('waktu'),
-            // "NoHp" => $this->input->post('NoHp'),
-            "bayar" => $this->input->post('bayar')
+            "NoHp" => $this->input->post('NoHp'),
+            // "bayar" => $this->input->post('bayar')
         );
         return $this->db->insert($this->table, $data);
     }
@@ -82,9 +88,10 @@ class Reservation extends CI_Model
             "nama_konsumen" => $this->input->post('nama_konsumen'),
             "jumlah_konsumen" => $this->input->post('jumlah_konsumen'),
             "pesanan" => $this->input->post('pesanan'),
+            "tanggal" => $this->input->post('tanggal'),
             "waktu" => $this->input->post('waktu'),
-            // "NoHp" => $this->input->post('NoHp'),
-            "bayar" => $this->input->post('bayar')
+            "NoHp" => $this->input->post('NoHp'),
+            // "bayar" => $this->input->post('bayar')
         );
         return $this->db->update($this->table, $data, array('id_rsvp' => $this->input->post('id_rsvp')));
     }

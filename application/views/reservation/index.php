@@ -8,7 +8,7 @@
     </nav>
     <div class="row">
         <div class="col-md-12">
-            <a class="btn btn-primary mb-2" href="<?= base_url('reservation/add'); ?>">Tambah Data</a>
+            <a class="btn btn-primary mb-2" href="<?= base_url('customer/add'); ?>">Tambah Data</a>
             <div mb-2>
                 <!-- Menampilkan flashh data (pesan saat data berhasil disimpan)-->
                 <?php if ($this->session->flashdata('message')) :
@@ -22,26 +22,36 @@
                         <table class="table table-striped table-bordered table-hover" id="tableMahasiswa">
                             <thead>
                                 <tr class="table-success">
-                                    <th></th>
+
                                     <th>NAMA PEMESAN</th>
                                     <th>JUMLAH PEMESAN</th>
                                     <th>PESANAN</th>
+                                    <th>TANGGAL RSVP</th>
                                     <th>WAKTU RSVP</th>
-                                    <th>BAYAR</th>
+                                    <th>No. HP</th>
+                                    <?php if ($dataUser['jabatan'] == 'konsumen') : ?>
+
+                                        <th>OPSI</th>
+                                    <?php endif ?>
+                                    <!-- <th>BAYAR</th> -->
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($rsvp as $row) : ?>
                                     <tr>
-                                        <td>
-                                            <a href="<?= site_url('reservation/edit/' . $row->id_rsvp) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> </a>
-                                            <a href="javascript:void(0);" data="<?= $row->id_rsvp ?>" class="btn btn-danger btn-sm item-delete"><i class="fa fa-trash"></i> </a>
-                                        </td>
                                         <td><?= $row->nama_konsumen ?></td>
                                         <td><?= $row->jumlah_konsumen ?></td>
                                         <td><?= $row->pesanan ?></td>
+                                        <td><?= $row->tanggal ?></td>
                                         <td><?= $row->waktu ?></td>
-                                        <td><?= $row->bayar ?></td>
+                                        <td><?= $row->NoHp ?></td>
+                                        <!-- <td><?= $row->bayar ?></td> -->
+                                        <?php if ($dataUser['jabatan'] == 'konsumen') : ?>
+                                            <td>
+                                                <a href="<?= base_url('customer/edit'); ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> </a>
+                                                <a href="javascript:void(0);" data="<?= $row->id_rsvp ?>" class="btn btn-danger btn-sm item-delete"><i class="fa fa-trash"></i> </a>
+                                            </td>
+                                        <?php endif ?>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
