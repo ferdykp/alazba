@@ -29,8 +29,7 @@
                                     <th>TANGGAL RSVP</th>
                                     <th>WAKTU RSVP</th>
                                     <th>No. HP</th>
-                                    <?php if ($dataUser['jabatan'] == 'konsumen') : ?>
-
+                                    <?php if ($dataUser['jabatan'] == 'administrator') : ?>
                                         <th>OPSI</th>
                                     <?php endif ?>
                                     <!-- <th>BAYAR</th> -->
@@ -46,7 +45,7 @@
                                         <td><?= $row->waktu ?></td>
                                         <td><?= $row->NoHp ?></td>
                                         <!-- <td><?= $row->bayar ?></td> -->
-                                        <?php if ($dataUser['jabatan'] == 'konsumen') : ?>
+                                        <?php if ($dataUser['jabatan'] == 'administrator') : ?>
                                             <td>
                                                 <a href="<?= base_url('customer/edit'); ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> </a>
                                                 <a href="javascript:void(0);" data="<?= $row->id_rsvp ?>" class="btn btn-danger btn-sm item-delete"><i class="fa fa-trash"></i> </a>

@@ -1,7 +1,7 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Transaksi_model extends CI_Model 
+class Transaksi_model extends CI_Model
 {
 	public function __construct()
 	{
@@ -14,7 +14,7 @@ class Transaksi_model extends CI_Model
 		$this->db->join('tb_menu', 'tb_menu.id_menu=tb_transaksi.id_menu', 'left');
 		$this->db->join('tb_outlet', 'tb_outlet.id_outlet=tb_transaksi.id_outlet', 'left');
 		$this->db->join('tb_user', 'tb_user.id_user=tb_transaksi.id_user', 'left');
-		$this->db->order_by('id_transaksi', 'desc'); 
+		$this->db->order_by('id_transaksi', 'desc');
 		$this->db->group_by('kode_invoice');
 		return $this->db->get_where('tb_transaksi', ['tb_transaksi.id_outlet' => $id_outlet])->result_array();
 	}
@@ -30,7 +30,7 @@ class Transaksi_model extends CI_Model
 			WHERE tb_transaksi.kode_invoice = '$kode_invoice' 
 			GROUP BY tb_transaksi.id_menu
 		";
-		
+
 		return $this->db->query($queryKuantitas)->result_array();
 	}
 
@@ -43,7 +43,7 @@ class Transaksi_model extends CI_Model
 		return $this->db->get_where('tb_transaksi', ['tb_transaksi.id_transaksi' => $id])->row_array();
 	}
 
-	public function kodeInvoice($tgl_transaksi, $id_outlet, $id_user , $field, $initial)
+	public function kodeInvoice($tgl_transaksi, $id_outlet, $id_user, $field, $initial)
 	{
 		// ambil kolom terakhir pada table
 		$query = "SELECT max($field) AS field FROM tb_transaksi INNER JOIN tb_outlet ON tb_transaksi.id_outlet = tb_outlet.id_outlet";
@@ -72,7 +72,7 @@ class Transaksi_model extends CI_Model
 		$conv = (int) $substr;
 		// tambahkan increase pada kode
 		$inc = $conv + 1;
-		
+
 		// membuat kode otomatis cth: 009, 010, 011 dan hasil akhir
 		$result_code = $just_date . str_pad($id_outlet, 2, "0", STR_PAD_LEFT) . str_pad($id_user, 2, "0", STR_PAD_LEFT)  . $initial . str_pad($inc, 4, "0", STR_PAD_LEFT);
 		return $result_code;
@@ -84,13 +84,13 @@ class Transaksi_model extends CI_Model
 		$id_user = $this->mm->dataUser()['id_user'];
 		$id_outlet = $this->mm->dataUser()['id_outlet'];
 		$kode_invoice = $this->kodeInvoice($tanggal_transaksi, $id_outlet, $id_user, 'id_transaksi', 'T');
-    	$kuantitas = $this->input->post('kuantitas', true);
-    	$id_menu = $this->input->post('id_menu', true);
-    	$keterangan = $this->input->post('keterangan', true);
-    	$data = [];
+		$kuantitas = $this->input->post('kuantitas', true);
+		$id_menu = $this->input->post('id_menu', true);
+		$keterangan = $this->input->post('keterangan', true);
+		$data = [];
 
-	    $index = 0;
-	    foreach($kuantitas as $k) {
+		$index = 0;
+		foreach ($kuantitas as $k) {
 			array_push($data, [
 				'kode_invoice' => $kode_invoice,
 				'kuantitas' => $kuantitas[$index],
@@ -101,7 +101,7 @@ class Transaksi_model extends CI_Model
 				'id_user' => $id_user,
 				'id_outlet' => $id_outlet
 			]);
-	    	$index++;
+			$index++;
 		}
 
 		$this->db->insert_batch('tb_transaksi', $data);
@@ -115,16 +115,16 @@ class Transaksi_model extends CI_Model
 		$tanggal_transaksi = time();
 		$id_user = $this->mm->dataUser()['id_user'];
 		$id_outlet = $this->mm->dataUser()['id_outlet'];
-    	$kuantitas = $this->input->post('kuantitas', true);
-    	$id_menu = $this->input->post('id_menu', true);
-    	$keterangan = $this->input->post('keterangan', true);
-    	$data = [];
-    	
-    	$kode_invoice_baru = $kode_invoice; 
-    	$this->db->delete('tb_transaksi', ['kode_invoice' => $kode_invoice]);
+		$kuantitas = $this->input->post('kuantitas', true);
+		$id_menu = $this->input->post('id_menu', true);
+		$keterangan = $this->input->post('keterangan', true);
+		$data = [];
 
-	    $index = 0;
-	    foreach($kuantitas as $k) {
+		$kode_invoice_baru = $kode_invoice;
+		$this->db->delete('tb_transaksi', ['kode_invoice' => $kode_invoice]);
+
+		$index = 0;
+		foreach ($kuantitas as $k) {
 			array_push($data, [
 				'kode_invoice' => $kode_invoice_baru,
 				'kuantitas' => $kuantitas[$index],
@@ -135,7 +135,7 @@ class Transaksi_model extends CI_Model
 				'id_user' => $id_user,
 				'id_outlet' => $id_outlet
 			]);
-	    	$index++;
+			$index++;
 		}
 
 		$this->db->insert_batch('tb_transaksi', $data);

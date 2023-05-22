@@ -55,10 +55,10 @@
                     </ul>
               </li>
             <?php endif ?>
+            <li>
+              <a href="<?= base_url('customer/reservation'); ?>"><i class="fas fa-fw fa-chair"></i> Pesan Tempat</a>
+            </li>
             <?php if ($dataUser['jabatan'] == 'konsumen') : ?>
-              <li>
-                <a href="<?= base_url('customer/reservation'); ?>"><i class="fas fa-fw fa-chair"></i> Pesan Tempat</a>
-              </li>
               <li>
                 <a href="<?= base_url('customer/menu_customer'); ?>"><i class="fas fa-fw fa-wine-glass"></i> Menu</a>
               </li>
