@@ -102,6 +102,11 @@ class Customer extends CI_Controller
         $validation = $this->form_validation;
         $validation->set_rules($rsvp->rules());
 
+        // $data['dataUser'] = $this->mm->dataUser();
+        // $data['transaksi'] = $this->tm->getTransaksiByIdOutletGroupByKodeInvoice($data['dataUser']['id_outlet']);
+        // $data['menu'] = $this->memo->getAllMenuByOutletUserLogin();
+
+
         if ($validation->run()) {
             $rsvp->save();
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
