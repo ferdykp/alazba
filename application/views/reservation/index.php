@@ -24,7 +24,7 @@
                                 <tr class="table-success">
 
                                     <th>NAMA PEMESAN</th>
-                                    <th>JUMLAH PEMESAN</th>
+                                    <th>UNTUK ORANG BERAPA</th>
                                     <th>PESANAN</th>
                                     <th>TANGGAL RSVP</th>
                                     <th>WAKTU RSVP</th>
