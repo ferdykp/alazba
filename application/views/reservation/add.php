@@ -3,7 +3,6 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb ">
             <li class="breadcrumb-item"><a>Booking Meja</a></li>
-            <li class="breadcrumb-item "><a href="<?= base_url('reservation'); ?>">List Data</a></li>
             <li class="breadcrumb-item active" aria-current="page">Add Data</li>
         </ol>
     </nav>

@@ -114,7 +114,7 @@ class Customer extends CI_Controller
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button></div>');
-            redirect("customer/reservation");
+            redirect("customer/pesan");
         }
         // $data["title"] = "Tambah Data RSVP";
         // $this->load->view('templates/header', $data);
@@ -148,7 +148,7 @@ class Customer extends CI_Controller
             </button></div>');
             redirect("reservation");
         }
-        $data["title"] = "Edit Data Mahasiswa";
+        $data["title"] = "Edit Data Booking";
         $data["data_rsvp"] = $rsvp->getById($id);
         if (!$data["data_rsvp"]) show_404();
         $this->load->view('templates/header', $data);
@@ -170,5 +170,20 @@ class Customer extends CI_Controller
             <span aria-hidden="true">&times;</span>
           </button></div>');
         $this->output->set_output(json_encode($msg));
+    }
+
+    public function pesan()
+    {
+        $this->mm->check_login();
+        $data['dataUser'] = $this->mm->dataUser();
+        $data['transaksi'] = $this->tm->getTransaksiByIdOutletGroupByKodeInvoice($data['dataUser']['id_outlet']);
+        $data['menu'] = $this->memo->getAllMenuByOutletUserLogin();
+        $data['title'] = "Halaman Transaksi";
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('reservation/pesan', $data);
+        $this->load->view('templates/tutup_sidebar', $data);
+        $this->load->view('templates/footer', $data);
+        redirect('customer/reservation');
     }
 }
