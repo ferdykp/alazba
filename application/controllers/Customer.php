@@ -184,6 +184,6 @@ class Customer extends CI_Controller
         $this->load->view('reservation/pesan', $data);
         $this->load->view('templates/tutup_sidebar', $data);
         $this->load->view('templates/footer', $data);
-        redirect('customer/reservation');
+        // redirect('customer/reservation');
     }
 }

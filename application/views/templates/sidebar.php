@@ -18,6 +18,11 @@
         <?php endif ?>
         <a href="<?= base_url('main'); ?>"><i class="fas fa-fw fa-tachometer-alt"></i> Dashboard</a>
         </li>
+        <?php if ($dataUser['jabatan'] == 'konsumen') : ?>
+          <li>
+            <a href="<?= base_url('customer/reservation'); ?>"><i class="fas fa-fw fa-wine-glass"></i> Dashboard RSVP</a>
+          </li>
+        <?php endif ?>
         <?php if ($className == 'transaksi') : ?>
           <li class="active">
           <?php else : ?>

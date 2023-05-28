@@ -19,11 +19,11 @@ class Reservation extends CI_Model
                 'label' => 'Jumlah Orang',
                 'rules' => 'trim|required'
             ],
-            [
-                'field' => 'pesanan',
-                'label' => 'pesanan',
-                'rules' => 'trim|required'
-            ],
+            // [
+            //     'field' => 'pesanan',
+            //     'label' => 'pesanan',
+            //     'rules' => 'trim|required'
+            // ],
             [
                 'field' => 'tanggal',
                 'label' => 'Tanggal Pesan',
@@ -72,7 +72,7 @@ class Reservation extends CI_Model
         $data = array(
             "nama_konsumen" => $this->input->post('nama_konsumen'),
             "jumlah_konsumen" => $this->input->post('jumlah_konsumen'),
-            "pesanan" => $this->input->post('pesanan'),
+            // "pesanan" => $this->input->post('pesanan'),
             "tanggal" => $this->input->post('tanggal'),
             "waktu" => $this->input->post('waktu'),
             "NoHp" => $this->input->post('NoHp'),
@@ -87,7 +87,7 @@ class Reservation extends CI_Model
         $data = array(
             "nama_konsumen" => $this->input->post('nama_konsumen'),
             "jumlah_konsumen" => $this->input->post('jumlah_konsumen'),
-            "pesanan" => $this->input->post('pesanan'),
+            // "pesanan" => $this->input->post('pesanan'),
             "tanggal" => $this->input->post('tanggal'),
             "waktu" => $this->input->post('waktu'),
             "NoHp" => $this->input->post('NoHp'),

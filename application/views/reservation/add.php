@@ -36,16 +36,6 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="pesanan" class="col-sm-2 col-form-label">Pesanan</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="pesanan" name="pesanan" value=" <?= set_value('pesanan'); ?>">
-                            <small class="text-danger">
-                                <?php echo form_error('pesanan') ?>
-                            </small>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
                         <label for="NoHp" class="col-sm-2 col-form-label">No. Hp</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="NoHp" name="NoHp" value=" <?= set_value('NoHp'); ?>">
