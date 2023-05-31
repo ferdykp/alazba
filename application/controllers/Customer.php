@@ -62,7 +62,7 @@ class Customer extends CI_Controller
         $this->load->view('templates/footer', $data);
     }
 
-    public function reservation()
+    public function dashboardrsvp()
     {
         // return print_r($this->mm->dataUser());
         $this->mm->check_login();
@@ -73,13 +73,13 @@ class Customer extends CI_Controller
         $data['transaksi'] = $this->tm->getTransaksiByIdOutletGroupByKodeInvoice($data['dataUser']['id_outlet']);
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
-        $this->load->view('reservation/index', $data);
+        $this->load->view('dashboardrsvp/index', $data);
         $this->load->view('templates/tutup_sidebar', $data);
         $this->load->view('templates/footer', $data);
     }
 
 
-    public function add()
+    public function reservation()
     {
         // $Mahasiswa = $this->Mahasiswa_model; //objek model
         // $validation = $this->form_validation; //objek form validation
@@ -124,7 +124,7 @@ class Customer extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
-        $this->load->view('reservation/add', $data);
+        $this->load->view('reservation/index', $data);
         $this->load->view('templates/tutup_sidebar', $data);
         $this->load->view('templates/footer', $data);
     }
