@@ -64,35 +64,38 @@
               <a href="<?= base_url('customer/reservation'); ?>"><i class="fas fa-fw fa-chair"></i> Pesan Tempat</a>
             </li>
             <?php if ($dataUser['jabatan'] == 'konsumen') : ?>
-              <li>
+              <!-- <li>
                 <a href="<?= base_url('customer/menu_customer'); ?>"><i class="fas fa-fw fa-wine-glass"></i> Menu</a>
-              </li>
+              </li> -->
             <?php endif ?>
-            <?php if ($className == 'pengeluaran') : ?>
-              <li class="active">
-              <?php else : ?>
-              <li>
-              <?php endif ?>
-              <a href="<?= base_url('pengeluaran'); ?>"><i class="fas fa-fw fa-share-square"></i> Pengeluaran</a>
-              </li>
-              </li>
+            <?php if ($dataUser['jabatan'] == 'administrator') : ?>
+              <?php if ($className == 'pengeluaran') : ?>
+                <li class="active">
+                <?php else : ?>
+                <li>
+                <?php endif ?>
+                <a href="<?= base_url('pengeluaran'); ?>"><i class="fas fa-fw fa-share-square"></i> Pengeluaran</a>
+                </li>
+                </li>
 
-              <li>
-                <?php if ($className == 'laporan' || $className == 'laporanPengeluaran') : ?>
-                  <a href="#homeSubmenu2" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle"><i class="fas fa-fw fa-file-pdf"></i> Laporan</a>
-                  <ul class="collapse list-unstyled show" id="homeSubmenu2">
-                  <?php else : ?>
-                    <a href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fw fa-file-pdf"></i> Laporan</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu2">
-                    <?php endif ?>
-                    <li>
-                      <a href="<?= base_url('laporan'); ?>">Laporan Transaksi</a>
-                    </li>
-                    <li>
-                      <a href="<?= base_url('laporanPengeluaran'); ?>">Laporan Pengeluaran</a>
-                    </li>
-                    </ul>
-              </li>
+                <li>
+                  <?php if ($className == 'laporan' || $className == 'laporanPengeluaran') : ?>
+                    <a href="#homeSubmenu2" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle"><i class="fas fa-fw fa-file-pdf"></i> Laporan</a>
+                    <ul class="collapse list-unstyled show" id="homeSubmenu2">
+                    <?php else : ?>
+                      <a href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fw fa-file-pdf"></i> Laporan</a>
+                      <ul class="collapse list-unstyled" id="homeSubmenu2">
+                      <?php endif ?>
+                      <li>
+                        <a href="<?= base_url('laporan'); ?>">Laporan Transaksi</a>
+                      </li>
+                      <li>
+                        <a href="<?= base_url('laporanPengeluaran'); ?>">Laporan Pengeluaran</a>
+                      </li>
+                      </ul>
+                </li>
+              <?php endif ?>
+
 
               <!-- <li>
         <?php if ($className == 'log' || $className == 'logPengeluaran') : ?>

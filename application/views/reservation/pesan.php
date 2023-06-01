@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="form-group">
-                            <label for="kuantitas[]">Kuantitas</label>
+                            <label for="kuantitas[]">Jumlah Pesanan</label>
                             <input type="number" min="1" id="kuantitas[]" class="form-control" placeholder="Masukkan Kuantitas" name="kuantitas[]" required value="<?= set_value('kuantitas[]'); ?>">
                             <?= form_error('kuantitas[]', '<small class="form-text text-danger">', '</small>'); ?>
                         </div>
@@ -34,7 +34,7 @@
                 <div class="col-lg">
                     <div class="form-group">
                         <label for="keterangan">Keterangan</label>
-                        <textarea name="keterangan" id="keterangan" class="form-control" placeholder="(optional)"><?= set_value('keterangan'); ?></textarea>
+                        <textarea name="keterangan" id="keterangan" class="form-control" placeholder="(catatan tambahan)"><?= set_value('keterangan'); ?></textarea>
                         <?= form_error('keterangan', '<small class="form-text text-danger">', '</small>'); ?>
                     </div>
                 </div>

@@ -96,7 +96,25 @@
 								<div class="form-group text-right">
 									<a class="btn btn-success" href="<?= base_url('prints/pembayaran/') . $kode_invoice; ?>"><i class="fas fa-fw fa-print"></i> Cetak Invoice</a>
 								</div>
+
 							<?php else : ?>
+								<div class="form-group">
+									<label for="modelbayar" class="font-weight-bold">Pilih Pembayaran</label>
+									<div class="form-group text-right">
+										<div class="col-sm-15">
+											<select class="form-control" id="modelbayar" name="modelbayar">
+												<option value="" selected disabled>Pilih</option>
+												<option value="Online" <?php if (set_value('modelbayar') == "Online") : echo "selected";
+																		endif; ?>>Online</option>
+												<option value="Offline" <?php if (set_value('modelbayar') == "Offline") : echo "selected";
+																		endif; ?>>Offline</option>
+											</select>
+											<small class="text-danger">
+												<?php echo form_error('modelbayar') ?>
+											</small>
+										</div>
+									</div>
+								</div>
 								<form method="post" action="<?= base_url('pembayaran/bayar/' . $kode_invoice); ?>">
 									<input type="hidden" name="sudahMelakukanPembayaran" value="1">
 									<div class="form-group">
@@ -104,10 +122,13 @@
 										<label for="jml_uang_dibayar" class="font-weight-bold">Uang yang dibayar</label>
 										<input type="number" id="jml_uang_dibayar" required="" min="<?= $total_harga_terakhir['total_harga_terakhir']; ?>" class="form-control" name="jml_uang_dibayar" value="<?= set_value('jml_uang_dibayar'); ?>">
 									</div>
-									<div class="form-group text-right">
+
+
+
+									<!-- <div class="form-group text-right">
 										<button name="bayar" type="submit" class="btn btn-success"><i class="fas fa-fw fa-dollar-sign"></i> Bayar Cash</button>
 										<button name="" type="submit" class="btn btn-success"><i class="fas fa-fw fa-dollar-sign"></i> Bayar Debit</button>
-									</div>
+									</div> -->
 								</form>
 							<?php endif ?>
 						</div>
