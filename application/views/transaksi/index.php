@@ -23,6 +23,7 @@
 			<h3><i class="fas fa-fw fa-handshake"></i> Daftar Transaksi</h3>
 		</div>
 		<div class="col-lg my-2 py-2 header-button">
+			<h3><i class="fas fa-fw fa-handshake"></i> Pesan Menu Disini</h3>
 			<a href="" class="btn btn-primary" data-toggle="modal" data-target="#tambahTransaksiModal"><i class="fas fa-fw fa-plus"></i> Tambah Pesanan</a>
 			<!-- Modal -->
 			<div class="modal fade" id="tambahTransaksiModal" tabindex="-1" aria-labelledby="tambahTransaksiModalLabel" aria-hidden="true">
@@ -30,7 +31,7 @@
 					<form action="<?= base_url('transaksi/addTransaksi'); ?>" method="post">
 						<div class="modal-content text-left">
 							<div class="modal-header">
-								<h5 class="modal-title" id="tambahTransaksiModalLabel"><i class="fas fa-fw fa-handshake"></i><sup><i class="fas fa-1x fa-plus"></i></sup> Tambah Transaksi</h5>
+								<h5 class="modal-title" id="tambahTransaksiModalLabel"><i class="fas fa-fw fa-handshake"></i><sup><i class="fas fa-1x fa-plus"></i></sup> Pesan Menu</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
@@ -40,8 +41,8 @@
 								<div class="row">
 									<div class="col-lg-4">
 										<div class="form-group">
-											<label for="kuantitas[]">Kuantitas</label>
-											<input type="number" min="1" id="kuantitas[]" class="form-control" placeholder="Masukkan Kuantitas" name="kuantitas[]" required value="<?= set_value('kuantitas[]'); ?>">
+											<label for="kuantitas[]">Jumlah Pesanan</label>
+											<input type="number" min="1" id="kuantitas[]" class="form-control" placeholder="Masukkan Jumlah Pesanan Anda" name="kuantitas[]" required value="<?= set_value('kuantitas[]'); ?>">
 											<?= form_error('kuantitas[]', '<small class="form-text text-danger">', '</small>'); ?>
 										</div>
 									</div>
@@ -78,6 +79,7 @@
 		<div class="row my-2">
 			<div class="col-lg my-2 py-2">
 				<div class="table-responsive">
+					<!-- <h3><i class="fas fa-fw fa-handshake"></i> Daftar Transaksi</h3> -->
 					<table id="table_id" class="table text-center table-bordered table-hover">
 						<thead>
 							<tr>
