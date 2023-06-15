@@ -236,6 +236,7 @@
 		      			<option value="<?= $dm['id_menu']; ?>"><?= $dm['nama_menu']; ?> | Rp. <?= ucwords($dm['harga_menu']); ?></option>
 	      			<?php endforeach ?>
 	      		</select>
+				  <img id="gambar_menu[]" src="" width="100%" alt="">
 	      	</div>
 			</div>
 		</div>`;
