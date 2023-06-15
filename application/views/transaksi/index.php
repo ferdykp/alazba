@@ -286,7 +286,7 @@
 			x2.removeChild(element.parentNode);
 		}
 
-		$(document).on("change", "#id_menu[]", function() {
+		$(document).on("change", "#id_menu[0]", function() {
 			var tahun = $(this).val()
 			var nisn = $('#metode_pembayaran').val()
 
