@@ -286,7 +286,7 @@
 			x2.removeChild(element.parentNode);
 		}
 
-		$(document).on("change", "#id_menu[0]", function() {
+		document.getElementById("id_menu[]").onchange = function() {
 			var tahun = $(this).val()
 			var nisn = $('#metode_pembayaran').val()
 
@@ -296,5 +296,5 @@
 				document.getElementById("gambar_menu").src =
 					"https://berita.99.co/wp-content/uploads/2021/10/contoh-gambar-pemandangan-alam-yang-mudah-ditiru.jpg";
 			}
-		})
+		}
 	</script>
