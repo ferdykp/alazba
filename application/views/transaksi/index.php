@@ -290,7 +290,8 @@
 			var tahun = $(this).val()
 			var nisn = $('#metode_pembayaran').val()
 
-			console.log(tahun);
+			console.log(tahun[0]);
+			console.log(tahun[1]);
 			document.getElementById("gambar_menu[]").src = ""
 			if (nisn != "offline") {
 				document.getElementById("gambar_menu[]").src =
