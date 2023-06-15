@@ -41,8 +41,8 @@ class Menu_model extends CI_Model
 		$config['upload_path']         = 'images/';  // folder upload 
 		$config['allowed_types']        = 'gif|jpg|png|jpeg'; // jenis file
 		$config['max_size']             = 3000;
-		$config['max_width']            = 1024;
-		$config['max_height']           = 768;
+		// $config['max_width']            = 1024;
+		// $config['max_height']           = 768;
 
 		$this->load->library('upload', $config);
 		// return print_r($this->upload->data());
