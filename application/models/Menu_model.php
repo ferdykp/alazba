@@ -59,7 +59,7 @@ class Menu_model extends CI_Model
 				'nama_menu' => ucwords(strtolower($this->input->post('nama_menu', true))),
 				'harga_menu' => $this->input->post('harga_menu', true),
 				'id_outlet' => $this->mm->dataUser()['id_outlet'],
-				'image' => $gambar,
+				'image' => ucwords(strtolower($this->input->post('nama_menu', true))),
 			];
 
 			$this->db->insert('tb_menu', $data);
