@@ -1,5 +1,5 @@
-<?php 	
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Menu_model extends CI_Model
 {
@@ -41,14 +41,15 @@ class Menu_model extends CI_Model
 		$data = [
 			'nama_menu' => ucwords(strtolower($this->input->post('nama_menu', true))),
 			'harga_menu' => $this->input->post('harga_menu', true),
-			'id_outlet' => $this->mm->dataUser()['id_outlet']
+			'id_outlet' => $this->mm->dataUser()['id_outlet'],
+			'image' => $this->input->post('image', true),
 		];
 
 		$this->db->insert('tb_menu', $data);
 		$this->session->set_flashdata('message-success', 'Menu baru dengan nama menu ' . $data['nama_menu'] . ' berhasil ditambahkan');
 		$this->lm->addLog('Menu baru dengan nama menu <b>' . $data['nama_menu'] . '</b> berhasil ditambahkan', $this->mm->dataUser()['id_user']);
 		redirect('main/menu');
-	}	
+	}
 
 	public function editMenu($id_menu)
 	{
@@ -68,7 +69,7 @@ class Menu_model extends CI_Model
 		$this->session->set_flashdata('message-success', 'Menu dengan nama menu ' . $nama_menu . ' berhasil diubah menjadi ' . $data['nama_menu']);
 		$this->lm->addLog('Menu dengan nama menu <b>' . $nama_menu . '</b> berhasil diubah menjadi <b>' . $data['nama_menu'] . '</b>', $this->mm->dataUser()['id_user']);
 		redirect('main/menu');
-	}	
+	}
 
 	public function deleteMenu($id_menu)
 	{
