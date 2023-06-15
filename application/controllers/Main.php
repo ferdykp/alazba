@@ -139,25 +139,6 @@ class Main extends CI_Controller
 
 	public function addMenu()
 	{
-		$config['upload_path']         = 'images/';  // folder upload 
-            $config['allowed_types']        = 'gif|jpg|png'; // jenis file
-            $config['max_size']             = 3000;
-            $config['max_width']            = 1024;
-            $config['max_height']           = 768;
- 
-            $this->load->library('upload', $config);
- 
-            if ( ! $this->upload->do_upload('gambar')) //sesuai dengan name pada form 
-            {
-                   echo 'anda gagal upload';
-            }
-            else
-            {
-            	//tampung data dari form
-            	$nama = $this->input->post('nama');
-            	$harga = $this->input->post('harga');
-            	$file = $this->upload->data();
-            	$gambar = $file['file_name'];
 		$this->memo->addMenu();
 	}
 
