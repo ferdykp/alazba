@@ -54,6 +54,7 @@
 												<?php endforeach ?>
 											</select>
 										</div>
+										<img id="gambar_menu" src="" width="100%" alt="">
 									</div>
 								</div>
 								<hr>
@@ -182,7 +183,6 @@
 																						<?php endforeach ?>
 																					</select>
 																				</div>
-																				<img id="gambar_menu" src="" width="100%" alt="">
 																			</div>
 																			<a class="btn btn-danger my-2 ml-3" href="javascript:;" onclick="hapus2(this)"><i class="fas fa-fw fa-trash"></i> Hapus Pesanan</a>
 																			<hr style="width: 100%">
@@ -286,7 +286,7 @@
 			x2.removeChild(element.parentNode);
 		}
 
-		$(document).on("change", "#id_menu[0]", function() {
+		$(document).on("change", "#id_menu[]", function() {
 			var tahun = $(this).val()
 			var nisn = $('#metode_pembayaran').val()
 
