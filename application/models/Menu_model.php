@@ -45,9 +45,11 @@ class Menu_model extends CI_Model
 		$config['max_height']           = 768;
 
 		$this->load->library('upload', $config);
-		return print_r($this->upload->data());
+		// return print_r($this->upload->data());
 		if (!$this->upload->do_upload('image')) //sesuai dengan name pada form 
 		{
+			$error = array('error' => $this->upload->display_errors());
+			return print_r($error);
 			echo 'anda gagal upload';
 		} else {
 			$file = $this->upload->data();
