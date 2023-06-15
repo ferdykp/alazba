@@ -54,7 +54,7 @@
 												<?php endforeach ?>
 											</select>
 										</div>
-										<img id="gambar_menu" src="" width="100%" alt="">
+										<img id="gambar_menu[]" src="" width="100%" alt="">
 									</div>
 								</div>
 								<hr>
@@ -291,9 +291,9 @@
 			var nisn = $('#metode_pembayaran').val()
 
 			console.log(tahun);
-			document.getElementById("gambar_menu").src = ""
+			document.getElementById("gambar_menu[]").src = ""
 			if (nisn != "offline") {
-				document.getElementById("gambar_menu").src =
+				document.getElementById("gambar_menu[]").src =
 					"https://berita.99.co/wp-content/uploads/2021/10/contoh-gambar-pemandangan-alam-yang-mudah-ditiru.jpg";
 			}
 		}
