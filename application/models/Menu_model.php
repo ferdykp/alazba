@@ -46,7 +46,7 @@ class Menu_model extends CI_Model
 
 		$this->load->library('upload', $config);
 
-		if (!$this->upload->do_upload('gambar')) //sesuai dengan name pada form 
+		if (!$this->upload->do_upload('image')) //sesuai dengan name pada form 
 		{
 			echo 'anda gagal upload';
 		} else {
