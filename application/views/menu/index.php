@@ -29,7 +29,7 @@
 									</div>
 									<div class="form-group">
 										<label for="harga_menu">Image</label>
-										<input type="file" id="image" class="form-control" placeholder="Masukkan Harga Minuman" name="image" required>
+										<input type="file" id="image" class="form-control" placeholder="Masukkan Gambar" name="image" required>
 									</div>
 								</div>
 								<div class="modal-footer">
