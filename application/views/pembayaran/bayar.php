@@ -99,18 +99,18 @@
 
 							<?php else : ?>
 								<div class="form-group">
-									<label for="modelbayar" class="font-weight-bold">Pilih Pembayaran</label>
+									<label for="metode" class="font-weight-bold">Pilih Pembayaran</label>
 									<div class="form-group text-right">
 										<div class="col-sm-15">
-											<select class="form-control" id="modelbayar" name="modelbayar">
+											<select class="form-control" id="metode" name="metode">
 												<option value="" selected disabled>Pilih</option>
-												<option value="Online" <?php if (set_value('modelbayar') == "Online") : echo "selected";
+												<option value="Online" <?php if (set_value('metode') == "Online") : echo "selected";
 																		endif; ?>>Online</option>
-												<option value="Offline" <?php if (set_value('modelbayar') == "Offline") : echo "selected";
+												<option value="Offline" <?php if (set_value('metode') == "Offline") : echo "selected";
 																		endif; ?>>Offline</option>
 											</select>
 											<small class="text-danger">
-												<?php echo form_error('modelbayar') ?>
+												<?php echo form_error('metode') ?>
 											</small>
 										</div>
 									</div>
@@ -125,10 +125,10 @@
 
 
 
-									<!-- <div class="form-group text-right">
+									<div class="form-group text-right">
 										<button name="bayar" type="submit" class="btn btn-success"><i class="fas fa-fw fa-dollar-sign"></i> Bayar Cash</button>
-										<button name="" type="submit" class="btn btn-success"><i class="fas fa-fw fa-dollar-sign"></i> Bayar Debit</button>
-									</div> -->
+										<!-- <button name="" type="submit" class="btn btn-success"><i class="fas fa-fw fa-dollar-sign"></i> Bayar Debit</button> -->
+									</div>
 								</form>
 							<?php endif ?>
 						</div>
