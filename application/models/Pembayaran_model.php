@@ -52,6 +52,7 @@ class Pembayaran_model extends CI_Model
 			redirect('pembayaran/bayar/' . $kode_invoice);
 		}
 
+		// return print_r($this->input->post('metode'));
 		if ($this->input->post('metode', true) == 'online') {
 			$total_pembayaran = $this->input->post('total_pembayaran', true);
 			$jml_uang_dibayar = $this->input->post('jml_uang_dibayar', true);

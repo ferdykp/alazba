@@ -98,24 +98,24 @@
 								</div>
 
 							<?php else : ?>
-								<div class="form-group">
-									<label for="metode" class="font-weight-bold">Pilih Pembayaran</label>
-									<div class="form-group text-right">
-										<div class="col-sm-15">
-											<select class="form-control" id="metode" name="metode">
-												<option value="" selected disabled>Pilih</option>
-												<option value="Online" <?php if (set_value('metode') == "Online") : echo "selected";
-																		endif; ?>>Online</option>
-												<option value="Offline" <?php if (set_value('metode') == "Offline") : echo "selected";
-																		endif; ?>>Offline</option>
-											</select>
-											<small class="text-danger">
-												<?php echo form_error('metode') ?>
-											</small>
+								<form method="post" action="<?= base_url('pembayaran/bayar/' . $kode_invoice); ?>">
+									<div class="form-group">
+										<label for="metode" class="font-weight-bold">Pilih Pembayaran</label>
+										<div class="form-group text-right">
+											<div class="col-sm-15">
+												<select class="form-control" id="metode" name="metode">
+													<option value="" selected disabled>Pilih</option>
+													<option value="online" <?php if (set_value('metode') == "online") : echo "selected";
+																			endif; ?>>Online</option>
+													<option value="offline" <?php if (set_value('metode') == "offline") : echo "selected";
+																			endif; ?>>Offline</option>
+												</select>
+												<small class="text-danger">
+													<?php echo form_error('metode') ?>
+												</small>
+											</div>
 										</div>
 									</div>
-								</div>
-								<form method="post" action="<?= base_url('pembayaran/bayar/' . $kode_invoice); ?>">
 									<input type="hidden" name="sudahMelakukanPembayaran" value="1">
 									<div class="form-group">
 										<input type="hidden" name="total_pembayaran" value="<?= $total_harga_terakhir['total_harga_terakhir']; ?>">
