@@ -1,7 +1,7 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Pembayaran_model extends CI_Model 
+class Pembayaran_model extends CI_Model
 {
 	public function __construct()
 	{
@@ -22,30 +22,62 @@ class Pembayaran_model extends CI_Model
 
 	public function bayar($kode_invoice)
 	{
-		$total_pembayaran = $this->input->post('total_pembayaran', true);
-		$jml_uang_dibayar = $this->input->post('jml_uang_dibayar', true);
-		$kembalian = $jml_uang_dibayar - $total_pembayaran;
-		$tgl_pembayaran = time();
-		$data = [
-			'total_pembayaran' => $total_pembayaran,
-			'jml_uang_dibayar' => $jml_uang_dibayar,
-			'kembalian' => $kembalian,
-			'tgl_pembayaran' => $tgl_pembayaran,
-			'kode_invoice' => $kode_invoice,
-			'id_user' => $this->mm->dataUser()['id_user'],
-			'id_outlet' => $this->mm->dataUser()['id_outlet']
-		];
+		if ($this->input->post('metode', true) == 'offline') {
+			$total_pembayaran = $this->input->post('total_pembayaran', true);
+			$jml_uang_dibayar = $this->input->post('jml_uang_dibayar', true);
+			$kembalian = $jml_uang_dibayar - $total_pembayaran;
+			$tgl_pembayaran = time();
+			$data = [
+				'total_pembayaran' => $total_pembayaran,
+				'jml_uang_dibayar' => $jml_uang_dibayar,
+				'kembalian' => $kembalian,
+				'tgl_pembayaran' => $tgl_pembayaran,
+				'kode_invoice' => $kode_invoice,
+				'id_user' => $this->mm->dataUser()['id_user'],
+				'id_outlet' => $this->mm->dataUser()['id_outlet'],
+				'status' => 'finish',
+				'metode' => 'offline',
+				'url_payment' => null
+			];
 
-		$query = $this->db->insert('tb_pembayaran', $data);
-		if ($query) {
-			//  change status bayar
-			$this->db->update('tb_transaksi', ['status_bayar' => 'sudah_dibayar'], ['tb_transaksi.kode_invoice' => $kode_invoice]);
+			$query = $this->db->insert('tb_pembayaran', $data);
+			if ($query) {
+				//  change status bayar
+				$this->db->update('tb_transaksi', ['status_bayar' => 'sudah_dibayar'], ['tb_transaksi.kode_invoice' => $kode_invoice]);
+			}
+			$this->session->set_flashdata('message-success', 'Pembayaran baru dengan kode invoice ' . $data['kode_invoice'] . ' berhasil ditambahkan');
+			$this->lm->addLog('Pembayaran baru dengan kode invoice <b>' . $data['kode_invoice'] . '</b> berhasil ditambahkan', $this->mm->dataUser()['id_user']);
+			/*$this->session->set_userdata(['kembalian' => $kembalian, 'jml_uang_dibayar' => $jml_uang_dibayar]);*/
+			$this->session->set_flashdata('pembayaran-berhasil', 'pembayaran-berhasil');
+			redirect('pembayaran/bayar/' . $kode_invoice);
 		}
-		$this->session->set_flashdata('message-success', 'Pembayaran baru dengan kode invoice ' . $data['kode_invoice'] . ' berhasil ditambahkan');
-		$this->lm->addLog('Pembayaran baru dengan kode invoice <b>' . $data['kode_invoice'] . '</b> berhasil ditambahkan', $this->mm->dataUser()['id_user']);
-		/*$this->session->set_userdata(['kembalian' => $kembalian, 'jml_uang_dibayar' => $jml_uang_dibayar]);*/
-		$this->session->set_flashdata('pembayaran-berhasil', 'pembayaran-berhasil');
-		redirect('pembayaran/bayar/' . $kode_invoice);
+
+		if ($this->input->post('metode', true) == 'online') {
+			$total_pembayaran = $this->input->post('total_pembayaran', true);
+			$jml_uang_dibayar = $this->input->post('jml_uang_dibayar', true);
+			$kembalian = $jml_uang_dibayar - $total_pembayaran;
+			$tgl_pembayaran = time();
+			$result = Midtrans::request($kode_invoice, $total_pembayaran);
+			$data = [
+				'total_pembayaran' => $total_pembayaran,
+				'jml_uang_dibayar' => $jml_uang_dibayar,
+				'kembalian' => $kembalian,
+				'tgl_pembayaran' => $tgl_pembayaran,
+				'kode_invoice' => $kode_invoice,
+				'id_user' => $this->mm->dataUser()['id_user'],
+				'id_outlet' => $this->mm->dataUser()['id_outlet'],
+				'status' => 'pending',
+				'metode' => 'online',
+				'url_payment' => $result
+			];
+
+			$query = $this->db->insert('tb_pembayaran', $data);
+			if ($query) {
+				//  change status bayar
+				$this->db->update('tb_transaksi', ['status_bayar' => 'sudah_dibayar'], ['tb_transaksi.kode_invoice' => $kode_invoice]);
+			}
+			$this->lm->addLog('Pembayaran baru dengan kode invoice <b>' . $data['kode_invoice'] . '</b> berhasil ditambahkan', $this->mm->dataUser()['id_user']);
+		}
 	}
 
 	public function getAllPembayaran()
