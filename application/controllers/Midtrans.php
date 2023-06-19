@@ -8,6 +8,7 @@ class Midtrans extends CI_Controller
 		parent::__construct();
 		$this->load->model('Log_model', 'lm');
 		$this->load->model('Main_model', 'mm');
+		$this->load->model('Pembayaran_model', 'pm');
 	}
 
 	public function index()
@@ -59,8 +60,9 @@ class Midtrans extends CI_Controller
 	public function callback()
 	{
 		$json_result = file_get_contents('php://input');
-		$result = json_decode($json_result);
+		$result = json_decode($json_result, true);
 
+		$this->pm->updateMidtrans($result['order_id']);
 		return $this->output
 			->set_content_type('application/json')
 			->set_status_header(200)
