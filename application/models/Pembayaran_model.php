@@ -79,6 +79,8 @@ class Pembayaran_model extends CI_Model
 				$this->db->update('tb_transaksi', ['status_bayar' => 'sudah_dibayar'], ['tb_transaksi.kode_invoice' => $kode_invoice]);
 			}
 			$this->lm->addLog('Pembayaran baru dengan kode invoice <b>' . $data['kode_invoice'] . '</b> berhasil ditambahkan', $this->mm->dataUser()['id_user']);
+
+			redirect($result);
 		}
 	}
 
