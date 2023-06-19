@@ -62,7 +62,7 @@ class Midtrans extends CI_Controller
 		$json_result = file_get_contents('php://input');
 		$result = json_decode($json_result);
 
-
+		return print_r($result['order_id']);
 		$this->pm->updateMidtrans($result['order_id']);
 		return $this->output
 			->set_content_type('application/json')
