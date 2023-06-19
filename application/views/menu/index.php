@@ -89,7 +89,7 @@
 																<label for="harga_menu<?= $dm['id_menu']; ?>">Harga Menu</label>
 																<input type="number" id="harga_menu<?= $dm['id_menu']; ?>" class="form-control" placeholder="Masukkan Harga Menu" name="harga_menu" value="<?= $dm['harga_menu']; ?>" required>
 															</div>
-															<div class="form-group">
+															<!-- <div class="form-group">
 																<?php echo $error; ?>
 
 																<?php echo form_open_multipart('upload/do_upload'); ?>
@@ -99,7 +99,7 @@
 																<br /><br />
 
 																<input type="submit" value="upload" />
-															</div>
+															</div> -->
 														</div>
 														<div class="modal-footer">
 															<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-sharp fa-solid fa-wine-glass fa-times"></i> Batal</button>

@@ -18,17 +18,15 @@
         <?php endif ?>
         <a href="<?= base_url('main'); ?>"><i class="fas fa-fw fa-tachometer-alt"></i> Dashboard</a>
         </li>
-        <?php if ($dataUser['jabatan'] == 'konsumen') : ?>
-          <li>
-            <a href="<?= base_url('customer/dashboardrsvp'); ?>"><i class="fas fa-fw fa-wine-glass"></i> Dashboard RSVP</a>
-          </li>
-        <?php endif ?>
+        <li>
+          <a href="<?= base_url('customer/dashboardrsvp'); ?>"><i class="fas fa-fw fa-wine-glass"></i> Dashboard RSVP</a>
+        </li>
         <?php if ($className == 'transaksi') : ?>
           <li class="active">
           <?php else : ?>
           <li>
           <?php endif ?>
-          <a href="<?= base_url('transaksi'); ?>"><i class="fas fa-fw fa-handshake"></i> Transaksi</a>
+          <a href="<?= base_url('transaksi'); ?>"><i class="fas fa-fw fa-handshake"></i> Pemesanan</a>
           </li>
           <?php if ($className == 'pembayaran') : ?>
             <li class="active">

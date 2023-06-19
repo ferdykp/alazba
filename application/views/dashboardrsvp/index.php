@@ -19,7 +19,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover" id="tableMahasiswa">
+                        <table class="table table-striped table-bordered table-hover" id="tableRsvp">
                             <thead>
                                 <tr class="table-success">
 
@@ -85,10 +85,10 @@
 
 <script>
     //menampilkan data ketabel dengan plugin datatables
-    $('#tableMahasiswa').DataTable();
+    $('#tableRsvp').DataTable();
 
     //menampilkan modal dialog saat tombol hapus ditekan
-    $('#tableMahasiswa').on('click', '.item-delete', function() {
+    $('#tableRsvp').on('click', '.item-delete', function() {
         //ambil data dari atribute data 
         var id = $(this).attr('data');
         $('#myModalDelete').modal('show');
@@ -99,7 +99,7 @@
                 type: 'ajax',
                 method: 'get',
                 async: false,
-                url: '<?php echo base_url() ?>mahasiswa/delete/',
+                url: '<?php echo base_url() ?>customer/delete/',
                 data: {
                     id: id
                 },
