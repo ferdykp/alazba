@@ -54,6 +54,7 @@
 													<option value="<?= $dm['id_menu']; ?>"><?= $dm['nama_menu']; ?> | Rp. <?= ucwords($dm['harga_menu']); ?></option>
 												<?php endforeach ?>
 											</select>
+											<img id="gambar_menu[]" src="" width="100%" alt="">
 										</div>
 									</div>
 								</div>
@@ -237,6 +238,7 @@
 		      			<option value="<?= $dm['id_menu']; ?>"><?= $dm['nama_menu']; ?> | Rp. <?= ucwords($dm['harga_menu']); ?></option>
 	      			<?php endforeach ?>
 	      		</select>
+				  <img id="gambar_menu[]" src="" width="100%" alt="">
 	      	</div>
 			</div>
 		</div>`;
@@ -285,5 +287,17 @@
 		function hapus2(element) {
 			var x2 = document.getElementById('record2');
 			x2.removeChild(element.parentNode);
+		}
+
+		document.getElementById("id_menu[]").onchange = function() {
+			var tahun = $(this).val()
+			var nisn = $('#metode_pembayaran').val()
+
+			console.log($('#id_menu').val());
+			document.getElementById("gambar_menu[]").src = ""
+			if (nisn != "offline") {
+				document.getElementById("gambar_menu[]").src =
+					"https://berita.99.co/wp-content/uploads/2021/10/contoh-gambar-pemandangan-alam-yang-mudah-ditiru.jpg";
+			}
 		}
 	</script>

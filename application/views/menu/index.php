@@ -10,7 +10,7 @@
 				<!-- Modal -->
 				<div class="modal fade" id="tambahMenuModal" tabindex="-1" aria-labelledby="tambahMenuModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
-						<form action="<?= base_url('main/addMenu'); ?>" method="post">
+						<form action="<?= base_url('main/addMenu'); ?>" method="post" enctype="multipart/form-data">
 							<div class="modal-content text-left">
 								<div class="modal-header">
 									<h5 class="modal-title" id="tambahMenuModalLabel"><i class="fas fa-sharp fa-solid fa-wine-glass"></i><sup><i class="fas fa-sharp fa-solid fa-wine-glass fa-plus"></i></sup> Tambah Minuman</h5>
@@ -26,6 +26,10 @@
 									<div class="form-group">
 										<label for="harga_menu">Harga Minuman</label>
 										<input type="number" id="harga_menu" class="form-control" placeholder="Masukkan Harga Minuman" name="harga_menu" required>
+									</div>
+									<div class="form-group">
+										<label for="harga_menu">Image</label>
+										<input type="file" id="image" class="form-control" placeholder="Masukkan Gambar" name="image" required>
 									</div>
 								</div>
 								<div class="modal-footer">

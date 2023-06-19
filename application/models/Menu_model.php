@@ -38,16 +38,35 @@ class Menu_model extends CI_Model
 	{
 		$this->checkJabatan('menambahkan menu');
 
-		$data = [
-			'nama_menu' => ucwords(strtolower($this->input->post('nama_menu', true))),
-			'harga_menu' => $this->input->post('harga_menu', true),
-			'id_outlet' => $this->mm->dataUser()['id_outlet']
-		];
+		$config['upload_path']         = 'images/';  // folder upload 
+		$config['allowed_types']        = 'gif|jpg|png|jpeg'; // jenis file
+		$config['max_size']             = 3000;
+		// $config['max_width']            = 1024;
+		// $config['max_height']           = 768;
 
-		$this->db->insert('tb_menu', $data);
-		$this->session->set_flashdata('message-success', 'Menu baru dengan nama menu ' . $data['nama_menu'] . ' berhasil ditambahkan');
-		$this->lm->addLog('Menu baru dengan nama menu <b>' . $data['nama_menu'] . '</b> berhasil ditambahkan', $this->mm->dataUser()['id_user']);
-		redirect('main/menu');
+		$this->load->library('upload', $config);
+		// return print_r($this->upload->data());
+		if (!$this->upload->do_upload('image')) //sesuai dengan name pada form 
+		{
+			$error = array('error' => $this->upload->display_errors());
+			return print_r($error);
+			echo 'anda gagal upload';
+		} else {
+			$file = $this->upload->data();
+			$gambar = $file['file_name'];
+
+			$data = [
+				'nama_menu' => ucwords(strtolower($this->input->post('nama_menu', true))),
+				'harga_menu' => $this->input->post('harga_menu', true),
+				'id_outlet' => $this->mm->dataUser()['id_outlet'],
+				'image' => '/images/' . $gambar,
+			];
+
+			$this->db->insert('tb_menu', $data);
+			$this->session->set_flashdata('message-success', 'Menu baru dengan nama menu ' . $data['nama_menu'] . ' berhasil ditambahkan');
+			$this->lm->addLog('Menu baru dengan nama menu <b>' . $data['nama_menu'] . '</b> berhasil ditambahkan', $this->mm->dataUser()['id_user']);
+			redirect('main/menu');
+		}
 	}
 
 	public function editMenu($id_menu)
