@@ -36,6 +36,7 @@
 									<td class="text-left">Rp. <?= number_format(0); ?></td>
 									<td class="text-left">Rp. <?= number_format(0); ?></td>
 									<td class="text-left">-</td>
+									<td class="text-left">-</td>
 									<td class="text-left">
 										<a href="<?= base_url('pembayaran/bayar/' . $dp['kode_invoice']); ?>" class="badge badge-danger"><i class="fas fa-fw fa-times"></i> Belum Dibayar</a>
 									</td>
