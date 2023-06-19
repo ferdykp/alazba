@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-$this->load->model('Pembayaran_model', 'pm');
 
 class Midtrans extends CI_Controller
 {
@@ -9,6 +8,7 @@ class Midtrans extends CI_Controller
 		parent::__construct();
 		$this->load->model('Log_model', 'lm');
 		$this->load->model('Main_model', 'mm');
+		$this->load->model('Pembayaran_model', 'pm');
 	}
 
 	public function index()
