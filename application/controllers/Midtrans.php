@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+$this->load->model('Pembayaran_model', 'pm');
 
 class Midtrans extends CI_Controller
 {
@@ -62,7 +63,7 @@ class Midtrans extends CI_Controller
 		$result = json_decode($json_result);
 
 
-		$this->db->update('tb_pembayaran', ['status' => 'finish'], ['tb_pembayaran.kode_invoice' => $result['order_id']]);
+		$this->pm->update('tb_pembayaran', ['status' => 'finish'], ['kode_invoice' => $result['order_id']]);
 		return $this->output
 			->set_content_type('application/json')
 			->set_status_header(200)
