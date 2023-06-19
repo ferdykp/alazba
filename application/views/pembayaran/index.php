@@ -17,6 +17,7 @@
 							<th>Kembalian</th>
 							<th>Tanggal Pembayaran</th>
 							<th>Status Bayar</th>
+							<th>Metode Bayar</th>
 							<th>Dilakukan Oleh</th>
 							<th>Aksi</th>
 						</tr>
@@ -54,6 +55,7 @@
 									<td class="text-left">
 										<span class="badge badge-success"><i class="fas fa-fw fa-check"></i> Sudah Dibayar</span>
 									</td>
+									<td class="text-left"><?= $dp['metode']; ?></td>
 									<td class="text-left"><?= $dp['nama_user']; ?></td>
 									<td>
 										<a target="_blank" href="<?= base_url('prints/pembayaran/' . $dp['kode_invoice']); ?>" class="btn btn-sm m-1 btn-success"><i class="fas fa-fw fa-print"></i> Cetak</a>
