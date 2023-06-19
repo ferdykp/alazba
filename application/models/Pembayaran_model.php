@@ -74,14 +74,20 @@ class Pembayaran_model extends CI_Model
 			];
 
 			$query = $this->db->insert('tb_pembayaran', $data);
-			if ($query) {
-				//  change status bayar
-				$this->db->update('tb_transaksi', ['status_bayar' => 'sudah_dibayar'], ['tb_transaksi.kode_invoice' => $kode_invoice]);
-			}
+			// if ($query) {
+			// 	//  change status bayar
+			// 	$this->db->update('tb_transaksi', ['status_bayar' => 'sudah_dibayar'], ['tb_transaksi.kode_invoice' => $kode_invoice]);
+			// }
 			$this->lm->addLog('Pembayaran baru dengan kode invoice <b>' . $data['kode_invoice'] . '</b> berhasil ditambahkan', $this->mm->dataUser()['id_user']);
 
 			redirect($result);
 		}
+	}
+
+	public function updateMidtrans($kode_invoice)
+	{
+		$this->db->update('tb_transaksi', ['status_bayar' => 'sudah_dibayar'], ['tb_transaksi.kode_invoice' => $kode_invoice]);
+		$this->db->update('tb_pembayaran', ['status' => 'finish'], ['kode_invoice' => $kode_invoice]);
 	}
 
 	public function getAllPembayaran()

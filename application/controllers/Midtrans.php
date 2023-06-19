@@ -63,7 +63,7 @@ class Midtrans extends CI_Controller
 		$result = json_decode($json_result);
 
 
-		$this->pm->update('tb_pembayaran', ['status' => 'finish'], ['kode_invoice' => $result['order_id']]);
+		$this->pm->update($result['order_id']);
 		return $this->output
 			->set_content_type('application/json')
 			->set_status_header(200)
