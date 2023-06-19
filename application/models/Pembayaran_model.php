@@ -59,6 +59,8 @@ class Pembayaran_model extends CI_Model
 			$kembalian = $jml_uang_dibayar - $total_pembayaran;
 			$tgl_pembayaran = time();
 			$result = $this->request($kode_invoice, $total_pembayaran);
+			$data = json_decode($result, true);
+			$result = $data['redirect_url'];
 			$data = [
 				'total_pembayaran' => $total_pembayaran,
 				'jml_uang_dibayar' => $jml_uang_dibayar,
