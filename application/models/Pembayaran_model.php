@@ -57,7 +57,7 @@ class Pembayaran_model extends CI_Model
 			$jml_uang_dibayar = $this->input->post('jml_uang_dibayar', true);
 			$kembalian = $jml_uang_dibayar - $total_pembayaran;
 			$tgl_pembayaran = time();
-			$result = Midtrans::request($kode_invoice, $total_pembayaran);
+			$result = $this->request($kode_invoice, $total_pembayaran);
 			$data = [
 				'total_pembayaran' => $total_pembayaran,
 				'jml_uang_dibayar' => $jml_uang_dibayar,
@@ -117,5 +117,41 @@ class Pembayaran_model extends CI_Model
 			GROUP BY tb_pembayaran.kode_invoice
 		";
 		return $this->db->query($query)->result_array();
+	}
+
+
+	public static function request($kode_pembayaran, $nominal)
+	{
+		$curl = curl_init();
+
+		$params = array(
+			'transaction_details' => array(
+				'order_id' => $kode_pembayaran,
+				'gross_amount' => $nominal,
+			)
+		);
+
+
+		curl_setopt_array($curl, array(
+			CURLOPT_URL => 'https://app.sandbox.midtrans.com/snap/v1/transactions',
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => '',
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 0,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => 'POST',
+			CURLOPT_POSTFIELDS => json_encode($params),
+			CURLOPT_HTTPHEADER => array(
+				'accept: application/json',
+				'authorization: Basic U0ItTWlkLXNlcnZlci1GX2hiX045S2pWMS1IWlh6YktCZ01uLWQ6aXJiYUtlcmVuMjM=',
+				'content-type: application/json'
+			),
+		));
+
+		$response = curl_exec($curl);
+		curl_close($curl);
+
+		return $response;
 	}
 }
