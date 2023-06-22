@@ -8,7 +8,7 @@
     </nav>
     <div class="row">
         <div class="col-md-12">
-            <a class="btn btn-primary mb-2" href="<?= base_url('customer/add'); ?>">Tambah Data</a>
+            <a class="btn btn-primary mb-2" href="<?= base_url('customer/reservation'); ?>">Booking Meja</a>
             <div mb-2>
                 <!-- Menampilkan flashh data (pesan saat data berhasil disimpan)-->
                 <?php if ($this->session->flashdata('message')) :
