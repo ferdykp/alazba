@@ -20,7 +20,7 @@ class Pembayaran extends CI_Controller
 		$data['dataUser'] = $this->mm->dataUser();
 		$data['title'] = "Halaman Pembayaran";
 		if ($data['dataUser']['jabatan'] == 'konsumen') {
-			$data['pembayaran'] = $this->tm->getAllPembayaranIdUser($data['dataUser']['id_user']);
+			$data['pembayaran'] = $this->pm->getAllPembayaranIdUser($data['dataUser']['id_user']);
 		} else {
 			$data['pembayaran'] = $this->pm->getAllPembayaran();
 		}
