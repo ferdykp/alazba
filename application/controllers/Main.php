@@ -19,7 +19,7 @@ class Main extends CI_Controller
 	{
 		// return print_r($this->mm->dataUser());
 		$this->mm->check_login();
-		print_r($this->mm->check_login());
+		print_r($this->mm->dataUser());
 		$data['dataUser'] = $this->mm->dataUser();
 		$data['title'] = "Halaman Dashboard";
 		$data['pengeluaran'] = $this->pemo->getAllPengeluaran();
