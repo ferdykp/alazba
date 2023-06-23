@@ -19,6 +19,16 @@ class Transaksi_model extends CI_Model
 		return $this->db->get_where('tb_transaksi', ['tb_transaksi.id_outlet' => $id_outlet])->result_array();
 	}
 
+	public function getTransaksiByIdOutletIdUserGroupByKodeInvoice($id_outlet, $id_user)
+	{
+		$this->db->join('tb_menu', 'tb_menu.id_menu=tb_transaksi.id_menu', 'left');
+		$this->db->join('tb_outlet', 'tb_outlet.id_outlet=tb_transaksi.id_outlet', 'left');
+		$this->db->join('tb_user', 'tb_user.id_user=tb_transaksi.id_user', 'left');
+		$this->db->order_by('id_transaksi', 'desc');
+		$this->db->group_by('kode_invoice');
+		return $this->db->get_where('tb_transaksi', ['tb_transaksi.id_outlet' => $id_outlet, 'tb_transaksi.id_user' => $id_user])->result_array();
+	}
+
 	public function getTransaksiByKodeInvoice($kode_invoice)
 	{
 		$queryKuantitas = "
