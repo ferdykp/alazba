@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Transaksi extends CI_Controller {
+class Transaksi extends CI_Controller
+{
 	public function __construct()
 	{
 		parent::__construct();
@@ -14,7 +15,11 @@ class Transaksi extends CI_Controller {
 	{
 		$this->mm->check_login();
 		$data['dataUser'] = $this->mm->dataUser();
-		$data['transaksi'] = $this->tm->getTransaksiByIdOutletGroupByKodeInvoice($data['dataUser']['id_outlet']);
+		if ($data['dataUser']['jabatan'] == 'konsumen') {
+			$data['transaksi'] = $this->tm->getTransaksiByIdOutletIdUserGroupByKodeInvoice($data['dataUser']['id_outlet'], $data['dataUser']['id_user']);
+		} else {
+			$data['transaksi'] = $this->tm->getTransaksiByIdOutletGroupByKodeInvoice($data['dataUser']['id_outlet']);
+		}
 		$data['menu'] = $this->memo->getAllMenuByOutletUserLogin();
 		$data['title'] = "Halaman Transaksi";
 		$this->load->view('templates/header', $data);

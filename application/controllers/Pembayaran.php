@@ -1,5 +1,5 @@
-<?php 	
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Pembayaran extends CI_Controller
 {
@@ -19,7 +19,11 @@ class Pembayaran extends CI_Controller
 		$this->mm->check_login();
 		$data['dataUser'] = $this->mm->dataUser();
 		$data['title'] = "Halaman Pembayaran";
-		$data['pembayaran'] = $this->pm->getAllPembayaran();
+		if ($data['dataUser']['jabatan'] == 'konsumen') {
+			$data['pembayaran'] = $this->tm->getTransaksiByIdOutletIdUserGroupByKodeInvoice($data['dataUser']['id_user']);
+		} else {
+			$data['pembayaran'] = $this->pm->getAllPembayaran();
+		}
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
@@ -39,15 +43,13 @@ class Pembayaran extends CI_Controller
 		$data['title'] = "Halaman Pembayaran - " . $kode_invoice;
 		$this->form_validation->set_rules('jml_uang_dibayar', 'Jumlah uang dibayar', 'required|trim');
 		if ($this->form_validation->run() == false) {
-		    $this->load->view('templates/header', $data);
+			$this->load->view('templates/header', $data);
 			$this->load->view('templates/sidebar', $data);
 			$this->load->view('pembayaran/bayar', $data);
 			$this->load->view('templates/tutup_sidebar', $data);
 			$this->load->view('templates/footer', $data);
 		} else {
-		    $this->pm->bayar($kode_invoice);
+			$this->pm->bayar($kode_invoice);
 		}
 	}
 }
-
- ?>
